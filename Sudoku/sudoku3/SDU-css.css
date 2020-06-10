@@ -1,0 +1,82 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.navbar-collapse {
+    font-size: 18px;
+}
+
+#bs-example-navbar-collapse-1 {
+    z-index: 999;
+}
+
+#prize {
+    margin: 50px auto;
+    display: block;
+    width: 320px;
+    height: 40px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 2px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0 0 3px 2px;
+    letter-spacing: 2px;
+    text-align: center;
+    line-height: 40px;
+}
+
+.div {
+    width: 330px;
+    height: 330px;
+    position: relative;
+    left: 0;
+    top: 10%;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+.div>span {
+    float: left;
+    width: 100px;
+    height: 100px;
+    margin: 5px;
+    background: rgb(22, 186, 236);
+    color: white;
+    text-align: center;
+    line-height: 100px;
+}
+
+.div>span:nth-of-type(4) {
+    position: relative;
+    left: 220px;
+}
+
+.div>span:nth-of-type(5) {
+    position: relative;
+    left: 110px;
+    top: 110px;
+}
+
+.div>span:nth-of-type(6) {
+    position: relative;
+    left: -110px;
+    top: 110px;
+}
+
+.div>span:nth-of-type(8) {
+    position: relative;
+    left: -110px;
+    top: -110px;
+}
+
+.div>span:nth-of-type(9) {
+    cursor: pointer;
+    background: rgb(255, 148, 61);
+    position: relative;
+    left: -110px;
+    top: -110px;
+}
+
+.div .aa {
+    background: rgb(78, 78, 78);
+}

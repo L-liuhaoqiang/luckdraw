@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
+    <title>js九宫格抽奖</title>
+    <link rel="stylesheet" href="./SDU-css.css">
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+
+
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+				  <span class="sr-only">Toggle navigation</span>
+				  <span class="icon-bar"></span>
+				  <span class="icon-bar"></span>
+				  <span class="icon-bar"></span>
+				</button>
+                <a class="navbar-brand" href="../../Sudoku.html"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span></a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="../../index.html">抽奖转盘<span class="sr-only">(current)1</span></a></li>
+                    <li><a href="../../tiger.html">老虎机抽奖</a></li>
+                    <li><a href="../../Sudoku.html">九宫格抽奖 </a></li>
+                    <li><a href="#">其它</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <p id='prize'></p>
+    <div class="div">
+        <span class="aa">手机</span>
+        <span>平板</span>
+        <span>电磁炉</span>
+        <span>洗衣机</span>
+        <span>衣柜</span>
+        <span>冰箱</span>
+        <span>电脑</span>
+        <span>电视</span>
+        <span>开始</span>
+    </div>
+
+    <script>
+        var prize = document.getElementById('prize');
+        var spans = document.querySelectorAll(".div>span");
+
+        function start() {
+            spans.forEach(function(el, index) {
+                if (index != 0) {
+                    el.classList.remove('aa'); // 清空上一次结果
+                }
+            })
+            prize.textContent = '';
+            spans[8].style.cursor = "not-allowed";
+            spans[8].onclick = null;
+            let num = -1; //奖品序号
+            let times = parseInt(Math.random() * (30 - 18 + 1) + 18, 10); //18到30的随机数
+            let time = 1; //当前的旋转次数
+            let speed = 100; //转盘速度
+            timer = setInterval(function() {
+                num++;
+                time++;
+                if (num > 7) {
+                    num = 0;
+                    spans[0].classList.add('aa');
+                    spans[7].classList.remove('aa');
+                } else if (num == 0) {
+                    spans[num].classList.add('aa');
+                    spans[7].classList.remove('aa');
+                } else {
+                    spans[num].classList.add('aa');
+                    spans[num - 1].classList.remove('aa');
+                }
+
+                if (time > times) {
+                    spans[8].onclick = start;
+                    spans[8].style.cursor = "pointer";
+                    clearInterval(timer);
+                    prize.textContent = '恭喜您抽中了' + spans[num].textContent + '!!!';
+                }
+            }, speed)
+        }
+        spans[8].onclick = start;
+    </script>
+    <script src="../../js/jquery-1.10.2.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,98 @@
+﻿<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="wap-font-scale" content="no">
+    <title>jQuery九宫格抽奖手机代码</title>
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="style/reset.css">
+    <link rel="stylesheet" type="text/css" href="style/version3.css">
+    <script type="text/javascript" src="js/jquery-1.8.0.min.js"></script>
+    <!--弹出层 开始 -->
+    <link type="text/css" rel="stylesheet" href="style/zdialog.css" />
+    <script src="../../js/jquery.3.4.1.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="./js/zdialog.js"></script>
+    <!--弹出层 结束 -->
+    <!--抽奖 -->
+    <script type="text/javascript" src="./js/zward.js"></script>
+
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+				  <span class="sr-only">Toggle navigation</span>
+				  <span class="icon-bar"></span>
+				  <span class="icon-bar"></span>
+				  <span class="icon-bar"></span>
+				</button>
+                <a class="navbar-brand" href="../../Sudoku.html"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span></a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="../../index.html">抽奖转盘<span class="sr-only">(current)1</span></a></li>
+                    <li><a href="../../tiger.html">老虎机抽奖</a></li>
+                    <li><a href="../../Sudoku.html">九宫格抽奖 </a></li>
+                    <li><a href="#">其它</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- <header>
+        <p>立即抽奖</p>
+    </header> -->
+    <div class="fixTop">
+        <div class="zward_colofulbg">
+            <div class="zDbanner zDbanner_top"><img src="images/zward_new_1.png"></div>
+            <div class="zDcontent_wrap box_S">
+                <div class="zDcontent container bor15  box_S" id="zWardcontainer">
+                    <div class="top bor15">
+                        <ul class="zwardList">
+                            <li></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="zDbanner"><img src="images/zward_new_3.png"></div>
+        </div>
+
+    </div>
+    <!--抽奖弹出层-->
+    <div class="bgfix" style="display:none;"></div>
+    <div class="lotteryDialogs">
+        <div class="lotteryC  vertical">
+            <div class="cc">
+                <div class="lotteryDialogsInner">
+                    <div class="lotteryDinner"></div>
+                    <div class="lotteryBtn radiushalf box_S">再来一次</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--抽奖弹出层 end-->
+    <script>
+        $(function() {
+            $("body").on("click", ".begin", function() {
+                if ($("#times").text() <= 0) {
+                    $(this).attr("clicked", "true");
+                    return;
+                }
+                var clicked = $(this).attr("clicked");
+                if (clicked == "true") {
+                    return;
+                }
+                $(this).attr("clicked", "true"); //禁止再次点击
+                datas = Math.floor(Math.random() * 5);
+                drawArd(datas)
+            })
+
+        })
+    </script>
+</body>
+
+</html>

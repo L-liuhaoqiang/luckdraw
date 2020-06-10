@@ -1,0 +1,118 @@
+﻿<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/atom.css">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/open.css">
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <script src="../../js/jquery.3.4.1.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
+    <title>Zepto.js插件实现宝箱开启动画抽奖 </title>
+    <style>
+        .open-body .bg {
+            top: 55px;
+        }
+        
+        .navbar-collapse {
+            z-index: 9999;
+        }
+        
+        .navbar-header {
+            z-index: 999;
+        }
+    </style>
+</head>
+
+<body ontouchstart="" class="open-body">
+    <div class="wrapper">
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+                    <a class="navbar-brand" href="../../other.html"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span></a>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="../../index.html">抽奖转盘<span class="sr-only">(current)1</span></a></li>
+                        <li><a href="../../tiger.html">老虎机抽奖</a></li>
+                        <li><a href="../../Sudoku.html">九宫格抽奖 </a></li>
+                        <li><a href="../../other.html">其它</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- bg背景 -->
+        <!-- <div class="bg rotate"></div> -->
+        <div class="open-has ">
+            <h3 class="title-close"><span class="user">顶航</span> </span>给你发了一个宝箱</h3>
+            <h3 class="title-open">恭喜你，</br>成功领取<span class="user">顶航</span>发的全民飞机大战宝箱</h3>
+
+            <div class="mod-chest">
+
+                <div class="chest-close show ">
+                    <div class="gift"></div>
+                    <div class="tips">
+                        <i class="arrow"></i>
+                    </div>
+                </div>
+                <div class="chest-open ">
+                    <div class="mod-chest-cont open-cont">
+                        <div class="content">
+                            <div class="gift">
+                                <div class="icon"><img src="img/chest-icon-zuan.png"></div> x 500
+                            </div>
+                            <div class="func">
+                                <button class="chest-btn">查看详情并提取</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="open-none" style="display:none">
+            <h3>你来晚啦，下次早点吧！</h3>
+            <div class="mod-chest">
+                <div class="chest-open show"></div>
+            </div>
+            <div class="func">
+                <button class="chest-btn">查看领取详情</button>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="js/zepto.min.js"></script>
+    <script type="text/javascript">
+        $(".chest-close").click(function() {
+
+            $(this).addClass("shake");
+            var that = this;
+
+            this.addEventListener("webkitAnimationEnd", function() {
+
+                $(that).closest(".open-has").addClass("opened");
+                setTimeout(function() {
+                    $(that).removeClass("show");
+                    $(that).closest(".mod-chest").find(".chest-open").addClass("show");
+                    setTimeout(function() {
+                        $(".chest-open").addClass("blur");
+                    }, 500)
+                }, 200)
+            }, false);
+        })
+    </script>
+
+    </div>
+</body>
+
+</html>

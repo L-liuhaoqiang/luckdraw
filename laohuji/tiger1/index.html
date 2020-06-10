@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>抽奖</title>
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/public.css">
+    <script src="../../js/jquery.3.4.1.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
+    <script src="js/easing.min.js"></script>
+    <script src="js/mejs.js"></script>
+    <style>
+        .zj_alert {
+            top: -4rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+				  <span class="sr-only">Toggle navigation</span>
+				  <span class="icon-bar"></span>
+				  <span class="icon-bar"></span>
+				  <span class="icon-bar"></span>
+				</button>
+                <a class="navbar-brand" href="../../tiger.html"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span></a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="../../index.html">抽奖转盘<span class="sr-only">(current)1</span></a></li>
+                    <li><a href="../../tiger.html">老虎机抽奖</a></li>
+                    <li><a href="../../Sudoku.html">九宫格抽奖 </a></li>
+                    <li><a href="#">其它</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="zj_alert">
+        <p>恭喜您</p>
+        <button class="zj_btn">确认</button>
+    </div>
+    <section>
+
+        <div class="machine">
+            <dl class="rotate_box clear">
+                <dd></dd>
+                <dd></dd>
+                <dd></dd>
+            </dl>
+            <a class="poiner" href="">
+                <img src="images/poiner.png" alt="">
+            </a>
+            <a class="rotate_btn" href="javascript: void(0);">
+                <img src="images/rocker.png" alt="">
+            </a>
+            <div class="btn_box">
+                <img src="images/share_btn.png" alt="">
+            </div>
+        </div>
+    </section>
+
+    <div class="mask">
+        <img src="images/alert_img.png" alt="">
+    </div>
+    </div>
+</body>
+
+</html>

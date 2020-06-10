@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>js九宫格打地鼠游戏代码 - 站长素材</title>
+
+<style>
+	body{background: #45454d;cursor:url("img/hammer.ico"),auto; user-select: none}
+	.holes{
+		width:600px;
+		height:600px;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%,-50%);
+		background: #45454d;
+		display: grid;
+		grid-template-columns: repeat(3,1fr);
+		grid-template-rows: repeat(3,1fr); 
+	}
+	.hole{
+		position: relative;
+	}
+	.hole img{
+		position: absolute;
+		width:97%;
+	}
+	.hole img.boom{
+		z-index: 1;
+		visibility: hidden;
+	}
+	.hole img.mouse{
+		width:60%;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%,-50%);
+		visibility: hidden;
+	}
+	div{
+		font-size: 3em;
+		color:#fff;
+	}
+</style>
+
+</head>
+<body onclick = "knock()">
+
+<div>积分：<span class="score"></span></div>
+<div class="holes">
+	<div class="hole"><img src="img/boom.png" class="boom" alt=""><img src="img/hole.png" alt=""><img src="img/mouse.png" class="mouse" alt=""></div>
+	<div class="hole"><img src="img/boom.png" class="boom" alt=""><img src="img/hole.png" alt=""><img src="img/mouse.png" class="mouse" alt=""></div>
+	<div class="hole"><img src="img/boom.png" class="boom" alt=""><img src="img/hole.png" alt=""><img src="img/mouse.png" class="mouse" alt=""></div>
+	<div class="hole"><img src="img/boom.png" class="boom" alt=""><img src="img/hole.png" alt=""><img src="img/mouse.png" class="mouse" alt=""></div>
+	<div class="hole"><img src="img/boom.png" class="boom" alt=""><img src="img/hole.png" alt=""><img src="img/mouse.png" class="mouse" alt=""></div>
+	<div class="hole"><img src="img/boom.png" class="boom" alt=""><img src="img/hole.png" alt=""><img src="img/mouse.png" class="mouse" alt=""></div>
+	<div class="hole"><img src="img/boom.png" class="boom" alt=""><img src="img/hole.png" alt=""><img src="img/mouse.png" class="mouse" alt=""></div>
+	<div class="hole"><img src="img/boom.png" class="boom" alt=""><img src="img/hole.png" alt=""><img src="img/mouse.png" class="mouse" alt=""></div>
+	<div class="hole"><img src="img/boom.png" class="boom" alt=""><img src="img/hole.png" alt=""><img src="img/mouse.png" class="mouse" alt=""></div>
+</div>
+<script>
+	var hole = document.querySelectorAll(".hole");
+	function mouseout(){
+		var i = Math.floor(Math.random()*9);
+		hole[i].lastElementChild.style.visibility = "visible";
+		hole[i].firstElementChild.style.visibility = "hidden";
+	}
+	function clearboom(){
+		for (var i = 0; i < hole.length; i++) {
+			hole[i].firstElementChild.style.visibility = "hidden";
+		}
+	}	
+	setInterval(mouseout, 1000);
+	for(var i = 0; i < hole.length; i++){
+		hole[i].lastElementChild.onclick = function(){
+			this.style.visibility = "hidden";
+			this.parentElement.firstElementChild.style.visibility = "visible";
+			setTimeout(clearboom, 260);
+			document.querySelector(".score").innerHTML = Number(document.querySelector(".score").innerHTML) + 100;
+		}
+	}
+	function knock(){
+		document.querySelector("body").style.cursor ="url('img/hammerdown.ico'),auto";
+		setTimeout(function(){
+			document.querySelector("body").style.cursor ="url('img/hammer.ico'),auto";
+		}, 300);
+	}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>lottery</title>
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <style>
+        body {
+            position: relative;
+            background: #8a9699;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                          <span class="sr-only">Toggle navigation</span>
+                          <span class="icon-bar"></span>
+                          <span class="icon-bar"></span>
+                          <span class="icon-bar"></span>
+                        </button>
+                <a class="navbar-brand" href="../../index.html">
+                    <span class="glyphicon glyphicon-menu-left" aria-hidden="true">
+                        </span>
+                </a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="../../index.html">抽奖转盘<span class="sr-only">(current)1</span></a></li>
+                    <li><a href="../../tiger.html">老虎机抽奖</a></li>
+                    <li><a href="../../Sudoku.html">九宫格抽奖 </a></li>
+                    <li><a href="../../other.html">抽奖四</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div id="box1">
+
+        <div class="table1">
+
+            <img src="./img/table.png" alt="">
+        </div>
+        <div class="btn1"></div>
+    </div>
+    <div class="zj_alert">
+        <p>恭喜您</p>
+        <button class="zj_btn">确认</button>
+    </div>
+
+    <script src="../../js/flexible.min.js"></script>
+    <script src="../../js/jquery.3.4.1.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
+    <script src="./js/dial.js"></script>
+    <script>
+        var lottery = new Lottery({
+            rotateNum: 6,
+            dom: '#box1',
+            startCbs: startFun,
+            disabledCbs: disabledFun,
+            endCbs: endFun
+        });
+        //  关闭中奖弹框
+        $(".zj_btn").click(function() {
+            $('.zj_alert').hide()
+        });
+        // 开始回调函数
+        function startFun() {
+            return randomDeg();
+        }
+        // 随机生成角度
+        function randomDeg() {
+            var num = Math.random() * 10;
+            var reg;
+            if (num < 5) {
+                // 10M
+                reg = Math.floor(Math.random() * 60);
+            } else if (num >= 5 && num < 8) {
+                // 30M
+                reg = Math.floor(Math.random() * 60 + 240);
+            } else if (num >= 8 && num < 9) {
+                // 5元
+                reg = Math.floor(Math.random() * 60 + 180);
+            } else if (num >= 9 && num < 9.7) {
+                // 20元
+                reg = Math.floor(Math.random() * 60 + 60);
+            } else if (num >= 9.7 && num < 9.9) {
+                // mini 4
+                reg = Math.floor(Math.random() * 60 + 120);
+            } else if (num >= 9.8) {
+                reg = Math.floor(Math.random() * 60 + 300);
+            }
+            return reg;
+        }
+
+        // 结束回调函数
+        function endFun(deg) {
+            var str = '';
+            if (deg < 60) { //10M流量
+                str = "三网通流量 10M";
+            } else if ((deg >= 60 && deg < 120)) { //IPhone 7
+                str = "话费20元";
+            } else if (deg >= 120 && deg < 180) { //30M流量
+                str = "ipad mini4";
+            } else if (deg >= 180 && deg < 240) { //5元话费
+                str = "话费5元";
+            } else if (deg >= 240 && deg < 300) { //IPad mini 4
+                str = "三网通流量 30M";
+            } else if (deg >= 300 && deg < 360) { //20元话费
+                str = " iPhone7";
+            }
+            $('.zj_alert>p').html('恭喜您获得' + str)
+            $('.zj_alert').show()
+
+
+        }
+
+        // 禁止回调函数
+        function disabledFun() {
+            console.log('抽奖中');
+        }
+    </script>
+
+</body>
+
+</html>

@@ -14,10 +14,10 @@ $(document).ready(function() {
                     audio.play();
                     $('.red-ss').addClass('wobble')
                     setTimeout(function() {
-                        openAudio.play();
                         audio.pause();
+                        openAudio.play();
                         $('.red-tc').css('display', 'block');
-                    }, 1000);
+                    }, 2000);
                 };
                 lastX = x;
                 lastY = y;

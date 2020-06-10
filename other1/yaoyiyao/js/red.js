@@ -17,7 +17,7 @@ $(document).ready(function() {
                         audio.pause();
                         openAudio.play();
                         $('.red-tc').css('display', 'block');
-                    }, 1500);
+                    }, 1000);
                 };
                 lastX = x;
                 lastY = y;

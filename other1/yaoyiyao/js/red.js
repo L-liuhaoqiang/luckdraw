@@ -14,8 +14,8 @@ $(document).ready(function() {
                     audio.play();
                     $('.red-ss').addClass('wobble')
                     setTimeout(function() {
-                        audio.pause();
                         openAudio.play();
+                        audio.pause();
                         $('.red-tc').css('display', 'block');
                     }, 1000);
                 };

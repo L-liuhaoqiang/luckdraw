@@ -95,6 +95,15 @@
             $(".red-tc").hide()
             $('.red-ss').removeClass("wobble");
         });
+        var audio = document.getElementById("shakemusic");
+        var openAudio = document.getElementById("openmusic");
+        audio.play();
+        $('.red-ss').addClass('wobble')
+        setTimeout(function() {
+            audio.pause();
+            openAudio.play();
+            $('.red-tc').css('display', 'block');
+        }, 1500);
     </script>
 
 </body>
